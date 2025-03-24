@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
   },
   imageSection: {
     width: width,
-    height: width,
+    height: "70%",
     backgroundColor: COLORS.surface,
     justifyContent: "center",
     alignItems: "center",

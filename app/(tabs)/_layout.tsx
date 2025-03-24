@@ -21,6 +21,7 @@ export default function TabLayout() {
         sceneStyle: {
           backgroundColor: COLORS.background,
         },
+        tabBarHideOnKeyboard: true,
       }}
     >
       <Tabs.Screen

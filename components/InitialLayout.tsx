@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 import { COLORS } from "@/constants/theme";
 import { StatusBar } from "expo-status-bar";
+import Loader from "./Loader";
 
 const InitialLayout = () => {
   const { isLoaded, isSignedIn } = useAuth();
@@ -23,7 +24,7 @@ const InitialLayout = () => {
     }
   }, [isLoaded, isSignedIn, segments]);
 
-  if (!isLoaded) return null;
+  if (!isLoaded) return <Loader />;
 
   return (
     <ThemeProvider value={DarkTheme}>
