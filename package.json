@@ -4,11 +4,18 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web",
+    "build:android": "eas build --platform android --profile production",
+    "offline": "expo start --offline",
+    "publish:expo": "eas update --branch preview && npx sentry-expo-upload-sourcemaps dist",
+    "publish:sentry": "bunx sentry-expo-upload-sourcemaps dist",
+    "upgrade": "bun install expo@latest && bunx expo install --fix",
+    "android": "bunx expo run:android --device",
+    "release:android": "bunx expo run:android --device --variant Release",
+    "release:ios": "bunx expo run:ios --configuration Release",
     "test": "jest --watchAll",
-    "lint": "expo lint"
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" && prettier -c \"**/*.{js,jsx,ts,tsx,json}\"",
+    "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix && prettier \"**/*.{js,jsx,ts,tsx,json}\" --write",
+    "ios": "expo run:ios"
   },
   "jest": {
     "preset": "jest-expo"
@@ -47,7 +54,8 @@
     "react-native-screens": "~4.4.0",
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
-    "svix": "^1.62.0"
+    "svix": "^1.62.0",
+    "expo-navigation-bar": "~4.0.9"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

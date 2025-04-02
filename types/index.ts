@@ -15,7 +15,6 @@ export interface CommentsModalProps {
   visible: boolean;
   postId: Id<"posts">;
   onClose: () => void;
-  onCommentsAdded: () => void;
 }
 
 export interface PostProps {

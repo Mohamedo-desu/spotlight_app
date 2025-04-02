@@ -3,8 +3,6 @@ import { DarkTheme, ThemeProvider } from "@react-navigation/native";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { useEffect } from "react";
 
-import { COLORS } from "@/constants/theme";
-import { StatusBar } from "expo-status-bar";
 import Loader from "./Loader";
 
 const InitialLayout = () => {
@@ -29,7 +27,6 @@ const InitialLayout = () => {
   return (
     <ThemeProvider value={DarkTheme}>
       <Stack screenOptions={{ headerShown: false }} />
-      <StatusBar style="light" backgroundColor={COLORS.background} />
     </ThemeProvider>
   );
 };

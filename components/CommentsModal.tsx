@@ -22,7 +22,6 @@ const CommentsModal: FC<CommentsModalProps> = ({
   postId,
   visible,
   onClose,
-  onCommentsAdded,
 }) => {
   const [newComment, setNewComment] = useState("");
   const comments = useQuery(api.comments.getComments, { postId });
@@ -36,7 +35,6 @@ const CommentsModal: FC<CommentsModalProps> = ({
 
       await addComment({ postId, content: newComment });
       setNewComment("");
-      onCommentsAdded();
     } catch (error) {
       console.log("Error adding comment", error);
     }

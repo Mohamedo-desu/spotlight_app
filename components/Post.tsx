@@ -16,8 +16,7 @@ import CommentsModal from "./CommentsModal";
 const Post = ({ post }: { post: PostProps }) => {
   const [isLiked, setIsLiked] = useState(post.isLiked);
   const [isBookmarked, setIsBookmarked] = useState(post.isBookmarked);
-  const [likesCount, setLikesCount] = useState(post.likes);
-  const [commentsCount, setCommentsCount] = useState(post.comments);
+
   const [showComments, setShowComments] = useState(false);
 
   const { user } = useUser();
@@ -35,7 +34,6 @@ const Post = ({ post }: { post: PostProps }) => {
     try {
       const newIsLiked = await toggleLike({ postId: post._id });
       setIsLiked(newIsLiked);
-      setLikesCount((prev) => (newIsLiked ? prev + 1 : prev - 1));
     } catch (error) {
       console.log("Error liking or disliking a post", error);
     }
@@ -131,12 +129,12 @@ const Post = ({ post }: { post: PostProps }) => {
       </View>
       {/* POST INFO */}
       <View style={styles.postInfo}>
-        {likesCount > 0 ? (
+        {post.likes > 0 ? (
           <View style={{ flexDirection: "row", gap: 5, marginBottom: 6 }}>
             <AnimatedNumbers
               includeComma
               animationDuration={500}
-              animateToNumber={likesCount}
+              animateToNumber={post.likes}
               fontStyle={styles.likesText}
             />
             <Text style={styles.likesText}>likes</Text>
@@ -151,10 +149,10 @@ const Post = ({ post }: { post: PostProps }) => {
             <Text style={styles.captionText}>{post.caption}</Text>
           </View>
         )}
-        {commentsCount > 0 && (
+        {post.comments > 0 && (
           <TouchableOpacity onPress={() => setShowComments(true)}>
             <Text style={styles.commentsText}>
-              View all {commentsCount} comments
+              View all {post.comments} comments
             </Text>
           </TouchableOpacity>
         )}
@@ -166,7 +164,6 @@ const Post = ({ post }: { post: PostProps }) => {
         visible={showComments}
         postId={post._id}
         onClose={() => setShowComments(false)}
-        onCommentsAdded={() => setCommentsCount((prev) => prev + 1)}
       />
     </View>
   );
