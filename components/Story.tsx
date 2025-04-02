@@ -1,16 +1,11 @@
 import { styles } from "@/styles/feed.styles";
+import { StoryProps } from "@/types";
+
 import { Image } from "expo-image";
 import React, { FC } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-interface Story {
-  id: string;
-  username: string;
-  avatar: string;
-  hasStory: boolean;
-}
-
-const Story: FC<{ story: Story }> = ({ story }) => {
+const Story: FC<{ story: StoryProps }> = ({ story }) => {
   return (
     <TouchableOpacity style={styles.storyWrapper}>
       <View style={[styles.storyRing, !story.hasStory && styles.noStory]}>

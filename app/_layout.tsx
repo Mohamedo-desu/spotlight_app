@@ -8,15 +8,19 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded, fontsError] = useFonts({
     "JetBrainsMono-Medium": require("@/assets/fonts/JetBrainsMono-Medium.ttf"),
   });
 
   useEffect(() => {
-    if (fontsLoaded) {
+    if (fontsLoaded || fontsError) {
       SplashScreen.hideAsync();
     }
-  }, [fontsLoaded]);
+  }, [fontsLoaded, fontsError]);
+
+  if (!fontsLoaded && !fontsError) {
+    return null;
+  }
 
   return (
     <ClerkAndConvexProvider>

@@ -19,7 +19,6 @@ const Login = () => {
 
       const { createdSessionId, setActive } = await startSSOFlow({
         strategy: "oauth_google",
-        redirectUrl,
       });
 
       if (setActive && createdSessionId) {

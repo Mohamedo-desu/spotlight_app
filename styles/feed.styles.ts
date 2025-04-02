@@ -104,7 +104,6 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
     color: COLORS.white,
-    marginBottom: 6,
   },
   captionContainer: {
     flexDirection: "row",

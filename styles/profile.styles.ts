@@ -58,12 +58,12 @@ export const styles = StyleSheet.create({
   },
   statItem: {
     alignItems: "center",
+    justifyContent: "space-between",
   },
   statNumber: {
     fontSize: 17,
     fontWeight: "700",
     color: COLORS.white,
-    marginBottom: 4,
   },
   statLabel: {
     fontSize: 13,

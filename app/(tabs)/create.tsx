@@ -95,6 +95,7 @@ const Create = () => {
 
       setSelectedImage("");
       setCaption("");
+
       router.push("/(tabs)");
     } catch (error) {
       console.error("Error sharing post", error);
